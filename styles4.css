@@ -1,0 +1,145 @@
+:root{
+     --background-clr: rgb(26, 67, 65);
+     --liquid-clr: rgb(153, 130, 53);
+     --bottle-clr: rgb(243, 172, 60);
+}
+
+body{
+    background: var(--background-clr);
+}
+
+.bottle{
+    height: 20rem;
+    width: 14rem;
+    background: linear-gradient(180deg, var(--bottle-clr) 50%, var(--liquid-clr) 50%);
+    margin: auto;
+    border-radius: 2.5rem;
+    position: relative;
+    top: 15rem;
+}
+
+/*   before the neck of the bottle    */
+
+.bottle::before{
+    content: '';
+    position: absolute;
+    left: 4.25rem;
+    right: 0rem;
+    top: -2.3rem;
+    height: 4rem;
+    width: 5.5rem;
+    border-radius: 1rem;
+    background: var(--bottle-clr);
+}
+
+/*    neck of the bottle    */
+
+.bottle::after{
+    content: '';
+    height: 3.5rem;
+    width: 1.5rem;
+    background: var(--bottle-clr);
+    position: absolute;
+    left: 6.25rem;
+    top: -5.8rem;
+    transition: top 0.8s;
+}
+.circle-bottle,
+.circle-liquid{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+}
+
+.circle-bottle{
+    position: absolute;
+    top: 6.5rem;
+    right: 0rem;
+    background: var(--bottle-clr);
+}
+
+.circle-liquid{
+    position: absolute;
+    top: 6.5rem;
+    background: var(--liquid-clr);
+}
+
+.head-of-bottle{
+    height: 1.6rem;
+    width: 13.5rem;
+    border-radius: 1rem;
+    background: var(--bottle-clr);
+    position: relative;
+    bottom: 12rem;
+    left: 44.5vw;
+    transition: bottom 0.8s;
+}
+
+/*    Drop one    */
+
+.head-of-bottle::before{
+    content: '';
+    position: absolute;
+    left: 11.5rem;
+    top: 1rem;
+    height: 4rem;
+    width: 2rem;
+    opacity: 0;
+    border-radius: 2rem;
+    background: var(--liquid-clr);
+    transition: opacity 100ms, transform 0.8s;
+}
+
+/*    Drop two    */
+
+.head-of-bottle::after{
+    content: '';
+    position: absolute;
+    left: 11.5rem;
+    top: 1rem;
+    height: 2rem;
+    width: 2rem;
+    opacity: 0;
+    border-radius: 50%;
+    background: var(--liquid-clr);
+    transition: opacity 100ms, transform 0.5s;
+}
+
+.bottle:hover + .head-of-bottle::after,
+.bottle:hover + .head-of-bottle::before{
+    opacity: 1;
+}
+
+.bottle:hover + .head-of-bottle::after{
+    transform: translateY(6rem);
+}
+
+.bottle:hover + .head-of-bottle::before{
+    transform: translateY(1rem);
+}
+
+.bottle:hover.bottle::after{
+    top: -4rem;
+}
+
+.bottle:hover + .head-of-bottle{
+    bottom: 10rem;
+}
+
+@media (max-width: 750px) {
+    .head-of-bottle{
+        left: 40vw;
+    }
+}
+
+@media (max-width: 450px) {
+    .head-of-bottle{
+        left: 35vw;
+        width: 12.5rem;
+    }
+   
+    .head-of-bottle::after,
+    .head-of-bottle::before{
+      width: 1rem;
+      height: 1rem;
+  }
